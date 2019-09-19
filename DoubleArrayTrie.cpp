@@ -13,6 +13,11 @@
 #include<vector>
 #include"utils.h"
 
+
+
+
+
+
 int DoubleArrayTrie::build(const string& file_path,const string& s_split)
 {
 	map<string,string> key2value;
@@ -44,6 +49,7 @@ int DoubleArrayTrie::build(const string& file_path,const string& s_split)
 	int a = dat.build(keys.size(), &(keys[0]),0,0);
 	return 0;
 }
+
 int DoubleArrayTrie::save(const string& file_path){
 	string value_file = file_path +".value";
 	this->dat.save(file_path.c_str());
