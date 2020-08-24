@@ -21,6 +21,7 @@ public:
 	int open(const string& file_path);
 	vector<pair<int,vector<pair<string,string> > > > all_match(const string& word);
 	vector<pair< int,pair<string,string> > > max_match(const string& word);
+	string match_replace(const string & word);
 private:
 	vector<string> values;
 	DAT dat;
