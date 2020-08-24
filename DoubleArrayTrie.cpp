@@ -125,5 +125,35 @@ vector<pair<int,pair<string,string> > > DoubleArrayTrie::max_match(const string&
 }
 
 
+string DoubleArrayTrie::match_replace(const string & word)
+{
 
+	std::vector<DAT::result_pair_type> result_pairs(1024);
+
+	vector<char> new_chars;
+	new_chars.reserve(word.length() * 2);
+
+	for(int i = 0,len = 0;i < word.size();){
+		const char* key = word.c_str() + i;
+		size_t size = this->dat.commonPrefixSearch(key, &result_pairs[0], result_pairs.size());
+		if (size == 0){
+		    int utf_len = UTFLEN((unsigned char)*key);
+		    std::copy(key, key + utf_len, std::back_inserter(new_chars));
+
+			i += utf_len;
+		}else{
+			size = std::min(size, result_pairs.size());
+
+			const DAT::result_pair_type& result_pair = result_pairs[size - 1];
+			size_t length = result_pair.length;
+
+			string v = this->values[result_pair.value];
+			std::copy(v.begin(), v.end(), std::back_inserter(new_chars));
+
+			i += length;
+		}
+	}
+	string new_string(new_chars.begin(), new_chars.end());
+	return new_string;
+}
 
