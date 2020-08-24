@@ -17,6 +17,7 @@ class DoubleArrayTrie
 {
 public:
 	int build(const string& file_path,const string& s_split = " ");
+	int mapbuild(const map<string,string>& key2value);
 	int save(const string& file_path);
 	int open(const string& file_path);
 	vector<pair<int,vector<pair<string,string> > > > all_match(const string& word);
