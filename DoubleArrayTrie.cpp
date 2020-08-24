@@ -14,7 +14,18 @@
 #include"utils.h"
 
 
+int DoubleArrayTrie::mapbuild(const map<string,string>& key2value)
+{
+    vector< const char * > keys;
+    clear();
+    for(map<string,string>::const_iterator it = key2value.begin();it != key2value.end();++it){
+            keys.push_back(it->first.c_str());
+            this->values.push_back(it->second);
+    }
 
+    int a = dat.build(keys.size(), &(keys[0]),0,0);
+    return 0;
+}
 
 
 
